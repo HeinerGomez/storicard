@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "storicard"
 include(":app")
+include(":data")
+include(":domain")
+include(":presentation")
+include(":shared")

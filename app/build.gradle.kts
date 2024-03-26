@@ -87,10 +87,10 @@ dependencies {
 
     implementation(Timber.timber)
 
-    /*implementation(project(Modules.shared))
+    implementation(project(Modules.shared))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
-    implementation(project(Modules.presentation))*/
+    implementation(project(Modules.presentation))
 
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)
