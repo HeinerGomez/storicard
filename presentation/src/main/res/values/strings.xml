@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Generics -->
+    <string name="place_holder_name">Nombres</string>
+    <string name="place_holder_surname">Apellidos</string>
+    <string name="place_holder_email">Correo electrónico</string>
+    <string name="place_holder_password">Contraseña</string>
+    <string name="place_holder_password_repeat">Repetir Contraseña</string>
+    <string name="btn_next">Siguiente</string>
+    <string name="btn_signup">Registrarme</string>
+    <string name="btn_login">Iniciar sesión</string>
+
+    <!-- Personal Data Screen -->
+    <string name="title_topbar_personal_data_screen">Registro</string>
+    <string name="title_personal_data_screen">Datos Personales</string>
+
+</resources>

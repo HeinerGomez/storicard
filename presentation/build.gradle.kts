@@ -14,4 +14,7 @@ dependencies {
     implementation(project(Modules.domain))
 
     implementation(Coil.coilCompose)
+    implementation(platform(Google.firebaseBoM))
+    implementation(Google.firebaseAnalitycs)
+    implementation(Google.firebaseFireStore)
 }

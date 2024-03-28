@@ -6,4 +6,7 @@ object Build {
 
     private const val hiltAndroidGradlePluginVersion = "2.45"
     const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltAndroidGradlePluginVersion"
+
+    private const val firebasePluginVersion = "4.4.1"
+    const val firebaseGradlePlugin = "com.google.gms:google-services:$firebasePluginVersion"
 }

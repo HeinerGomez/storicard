@@ -17,4 +17,7 @@ dependencies {
     implementation(Retrofit.retrofit)
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
+    implementation(platform(Google.firebaseBoM))
+    implementation(Google.firebaseAnalitycs)
+    implementation(Google.firebaseFireStore)
 }

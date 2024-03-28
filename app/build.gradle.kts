@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -79,6 +80,10 @@ dependencies {
     implementation(Coil.coilCompose)
 
     implementation(Google.material)
+    implementation(platform(Google.firebaseBoM))
+    implementation(Google.firebaseAnalitycs)
+    implementation(Google.firebaseFireStore)
+    implementation(Google.firebaseDataBase)
 
     implementation(Retrofit.okHttp)
     implementation(Retrofit.retrofit)
