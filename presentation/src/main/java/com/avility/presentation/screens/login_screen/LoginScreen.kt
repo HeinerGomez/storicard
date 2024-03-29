@@ -85,6 +85,7 @@ fun LoginScreen(
                 Button(
                     onClick = {
                         // viewModel.dispatchAction(LoginScreenAction.Login)
+                        navController.navigate(Screen.HomeScreen.route)
                     },
                     modifier = Modifier
                         .fillMaxWidth()

@@ -60,3 +60,4 @@ val inverseSurfaceDark = Color(0xFFDEE3E5)
 val inverseOnSurfaceDark = Color(0xFF2B3133)
 val inversePrimaryDark = Color(0xFF006875)
 
+val errorPrimary = Color(0xFFF44336)

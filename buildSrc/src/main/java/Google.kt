@@ -11,4 +11,7 @@ object Google {
     const val firebaseFireStore = "com.google.firebase:firebase-firestore-ktx:$firebaseFireStoreVersion"
 
     const val firebaseDataBase = "com.google.firebase:firebase-database"
+
+    private const val accompanistPermissionVersion = "0.35.0-alpha"
+    const val accompanistPermission = "com.google.accompanist:accompanist-permissions:$accompanistPermissionVersion"
 }

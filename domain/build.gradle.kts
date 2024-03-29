@@ -11,4 +11,8 @@ android {
 
 dependencies {
     implementation(project(Modules.shared))
+    implementation(platform(Google.firebaseBoM))
+    implementation(Google.firebaseAnalitycs)
+    implementation(Google.firebaseFireStore)
+    implementation(Google.firebaseDataBase)
 }

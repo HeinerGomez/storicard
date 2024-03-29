@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "734307422714",
+    "project_id": "storicredit-34487",
+    "storage_bucket": "storicredit-34487.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734307422714:android:3474ce669d4bf65ccd5443",
+        "android_client_info": {
+          "package_name": "com.avility.storicard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBELQgi3EfaHlvo5y1bxEYV1ylrPd9saK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

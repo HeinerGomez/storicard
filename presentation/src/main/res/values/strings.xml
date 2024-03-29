@@ -14,4 +14,10 @@
     <string name="title_topbar_personal_data_screen">Registro</string>
     <string name="title_personal_data_screen">Datos Personales</string>
 
+    <!-- Take Photo Screen -->
+    <string name="title_topbar_take_photo_data_screen">Foto de perfil</string>
+
+    <!-- Card Resources -->
+    <string name="valid_until">Válido Hasta</string>
+
 </resources>

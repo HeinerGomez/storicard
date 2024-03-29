@@ -25,6 +25,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.avility.presentation.R
+import com.avility.shared.ui.Screen
 import com.avility.shared.ui.components.containers.MainContainer
 import com.avility.shared.ui.components.elements_forms.StoriButton
 import com.avility.shared.ui.components.elements_forms.StoriTextField
@@ -156,7 +157,7 @@ fun PersonalDataScreen(
                 StoriButton(
                     text = stringResource(R.string.btn_next),
                     onTap = {
-                        viewModel.dispatchAction(PersonalDataScreenAction.RedirectToPhotoScreen)
+                        navController.navigate(Screen.TakePhotoScreen.route)
                     }
                 )
             }
