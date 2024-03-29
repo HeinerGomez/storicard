@@ -14,4 +14,6 @@ object Google {
 
     private const val accompanistPermissionVersion = "0.35.0-alpha"
     const val accompanistPermission = "com.google.accompanist:accompanist-permissions:$accompanistPermissionVersion"
+
+    const val firebaseAuth = "com.google.firebase:firebase-auth"
 }

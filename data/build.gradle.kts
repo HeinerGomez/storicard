@@ -20,4 +20,5 @@ dependencies {
     implementation(platform(Google.firebaseBoM))
     implementation(Google.firebaseAnalitycs)
     implementation(Google.firebaseFireStore)
+    implementation(Google.firebaseAuth)
 }

@@ -6,6 +6,7 @@ import com.avility.data.repository.UserRepositoryImpl
 import com.avility.domain.repository.CardRepository
 import com.avility.domain.repository.MovementRepository
 import com.avility.domain.repository.UserRepository
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
@@ -23,10 +24,16 @@ object AppModule {
         return FirebaseFirestore.getInstance()
     }
 
+   @Provides
+   @Singleton
+       fun provideFireAuth(): FirebaseAuth {
+       return FirebaseAuth.getInstance()
+   }
+
     @Provides
     @Singleton
-    fun provideUserRepository(fireStore: FirebaseFirestore): UserRepository {
-        return UserRepositoryImpl(fireStore)
+    fun provideUserRepository(fireStore: FirebaseFirestore, fireAuth: FirebaseAuth): UserRepository {
+        return UserRepositoryImpl(fireStore, fireAuth)
     }
 
     @Provides

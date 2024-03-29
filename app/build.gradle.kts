@@ -84,6 +84,7 @@ dependencies {
     implementation(Google.firebaseAnalitycs)
     implementation(Google.firebaseFireStore)
     implementation(Google.firebaseDataBase)
+    implementation(Google.firebaseAuth)
 
     implementation(Retrofit.okHttp)
     implementation(Retrofit.retrofit)

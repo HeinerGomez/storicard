@@ -10,6 +10,9 @@
     <string name="btn_signup">Registrarme</string>
     <string name="btn_login">Iniciar sesión</string>
 
+    <!-- Login Screen -->
+    <string name="welcome_stori_card">Bienvenido a Stori Card</string>
+
     <!-- Personal Data Screen -->
     <string name="title_topbar_personal_data_screen">Registro</string>
     <string name="title_personal_data_screen">Datos Personales</string>
