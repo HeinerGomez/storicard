@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Validation Form Resources -->
+    <string name="email_is_blank">El correo electrónico es requerido</string>
+    <string name="invalid_email">Correo electrónico inválido</string>
+    <string name="password_is_blank">La contraseña es requerida</string>
+    <string name="password_min_length">La contraseña debe tener al menos 5 carácteres</string>
+    <string name="password_max_length">La contraseña no puede superar los 10 carácteres</string>
+    <string name="password_repeat_no_matches">Las contraseñas no coinciden</string>
+    <string name="required_field">Campo requerido</string>
+
+    <!-- Firebase error -->
+    <string name="email_already_taken">Ya hay una cuenta con este correo electrónico</string>
+    <string name="error_when_is_trying_create_account">Ocurrio un error al intentar crear la cuenta, intentelo más tarde</string>
+</resources>
