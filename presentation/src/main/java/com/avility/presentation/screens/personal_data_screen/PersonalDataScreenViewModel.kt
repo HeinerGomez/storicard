@@ -6,11 +6,11 @@ import com.avility.domain.usescases.form_validation.ValidateEmailUseCase
 import com.avility.domain.usescases.form_validation.ValidateGenericFieldUseCase
 import com.avility.domain.usescases.form_validation.ValidatePasswordUseCase
 import com.avility.presentation.screens.BaseViewModel
-import com.avility.presentation.ui_models.FieldValidation
-import com.avility.presentation.ui_models.KeyField
 import com.avility.presentation.ui_models.PersonalDataUIModel
-import com.avility.presentation.ui_models.isValidForm
 import com.avility.presentation.ui_models.toUserModel
+import com.avility.presentation.validations.FieldValidation
+import com.avility.presentation.validations.KeyField
+import com.avility.presentation.validations.isValidForm
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -26,6 +26,7 @@ class PersonalDataScreenViewModel @Inject constructor(
 
     override fun dispatchAction(action: PersonalDataScreenAction) {
         when (action) {
+            PersonalDataScreenAction.ClearState -> setState(PersonalDataScreenState())
             is PersonalDataScreenAction.UpdatePersonalData -> updatePersonalData(action)
             PersonalDataScreenAction.OnNextButton -> onNextButton()
         }

@@ -7,5 +7,7 @@ data class HomeScreenState(
     val isLoading: Boolean = false,
     val data: HomeDataUI? = null,
     @StringRes
-    val msgErrorResource: Int? = null
+    val msgErrorResourceForCard: Int? = null,
+    @StringRes
+    val msgErrorResourceForMovement: Int? = null
 )

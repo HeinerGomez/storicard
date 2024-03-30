@@ -27,7 +27,7 @@ fun Navigation() {
         composable(Screen.TakePhotoScreen.route+"/{userId}") {
             TakePhotoScreen(navController)
         }
-        composable(Screen.HomeScreen.route) {
+        composable(Screen.HomeScreen.route+"/{userId}") {
             HomeScreen(navController)
         }
     }

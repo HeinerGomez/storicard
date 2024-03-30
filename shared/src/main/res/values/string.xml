@@ -13,4 +13,8 @@
     <string name="email_already_taken">Ya hay una cuenta con este correo electrónico</string>
     <string name="error_when_is_trying_create_account">Ocurrio un error al intentar crear la cuenta, intentelo más tarde</string>
     <string name="error_when_is_trying_update_photo">Ocurrio un error al intentar subir la foto, intentelo más tarde</string>
+    <string name="auth_failed">Datos inválidos</string>
+    <string name="auth_error">Ha ocurrido un error en la autenticación, intente más tarde</string>
+    <string name="get_card_info_failed">Ha ocurrido un error al intentar obtener los datos de la tarjeta de crédito</string>
+    <string name="get_movement_info_failed">No logramos obtener los movimientos asociados a esta tarjeta de crédito</string>
 </resources>

@@ -12,7 +12,7 @@ class GetCardUserDataUseCase @Inject constructor(
     operator fun invoke(userId: String)  = combine(
         cardRepository.getCardData(userId),
         movementRepository.getMovementsOfCard(userId)
-    ) { cardModel, movementModel ->
-        Pair(cardModel, movementModel)
+    ) { cardResource, movementResource ->
+        Pair(cardResource, movementResource)
     }
 }

@@ -1,7 +1,8 @@
 package com.avility.presentation.ui_models
 
-import androidx.annotation.StringRes
 import com.avility.domain.model.UserModel
+import com.avility.presentation.validations.FieldValidation
+import com.avility.presentation.validations.KeyField
 
 data class PersonalDataUIModel(
     val name: String = "",
@@ -24,27 +25,6 @@ data class PersonalDataUIModel(
 
         return fieldValidation?.errorResource
     }
-}
-
-sealed class FieldValidation(
-    @StringRes var errorResource: Int? = null,
-    val keyField: KeyField
-) {
-    class GenericField(keyField: KeyField) : FieldValidation(null, keyField)
-    class EmailField(keyField: KeyField) : FieldValidation(null, keyField)
-    class PasswordField(keyField: KeyField) : FieldValidation(null, keyField)
-}
-
-fun List<FieldValidation>.isValidForm(): Boolean {
-    return !this.any { it.errorResource != null }
-}
-
-enum class KeyField {
-    NAME,
-    SURNAME,
-    EMAIL,
-    PASSWORD,
-    REPEAT_PASSWORD
 }
 
 fun PersonalDataUIModel.toUserModel() = UserModel(

@@ -1,5 +1,6 @@
 package com.avility.presentation.screens.login_screen
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,25 +11,29 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.avility.shared.ui.components.containers.MainContainer
 import com.avility.shared.R as SharedResource
 import com.avility.presentation.R
+import com.avility.presentation.validations.KeyField
 import com.avility.shared.ui.Screen
+import com.avility.shared.ui.components.elements_forms.StoriButton
 import com.avility.shared.ui.components.elements_forms.StoriTextField
 import com.avility.shared.ui.constants.MeasureSmallDimen
 import com.avility.shared.ui.constants.roundedShapes
@@ -40,7 +45,7 @@ fun LoginScreen(
     viewModel: LoginScreenViewModel = hiltViewModel()
 ) {
     MainContainer(
-        isLoading = false
+        isLoading = viewModel.uiState.value.isLoading
     ) {
         Column(
             Modifier
@@ -85,7 +90,23 @@ private fun FormLogin(
     viewModel: LoginScreenViewModel,
     scope: ColumnScope
 ) {
-    val data = viewModel.uiState.value.data
+    val state = viewModel.uiState.value
+    val data = state.data
+    val applicationContext = LocalContext.current
+
+    if (state.isLoginSuccessful) {
+        viewModel.dispatchAction(LoginScreenAction.ClearState)
+        navController.navigate(Screen.HomeScreen.route+"/${data.email}") {
+            popUpTo(0)
+        }
+    }
+
+    state.msgErrorResource?.let {
+        viewModel.dispatchAction(LoginScreenAction.ClearState)
+        LaunchedEffect(Unit) {
+            Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
+        }
+    }
 
     scope.run {
         Column(
@@ -108,6 +129,16 @@ private fun FormLogin(
                     ))
                 }
             )
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = data.getErrorResource(KeyField.EMAIL)?.let {
+                    stringResource(it)
+                }.orEmpty(),
+                textAlign = TextAlign.End,
+                style = MaterialTheme.typography.labelMedium.copy(
+                    color = MaterialTheme.colorScheme.error
+                )
+            )
             Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X10.value))
             StoriTextField(
                 style = TextFieldStyle.Standard,
@@ -123,22 +154,25 @@ private fun FormLogin(
                     ))
                 }
             )
-            Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X10.value))
-            Button(
-                onClick = {
-                    viewModel.dispatchAction(LoginScreenAction.Login)
-                    // navController.navigate(Screen.HomeScreen.route)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(MeasureSmallDimen.DIMEN_X23.value),
-                shape = roundedShapes.medium,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondary
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = data.getErrorResource(KeyField.PASSWORD)?.let {
+                    stringResource(it)
+                }.orEmpty(),
+                textAlign = TextAlign.End,
+                style = MaterialTheme.typography.labelMedium.copy(
+                    color = MaterialTheme.colorScheme.error
                 )
-            ) {
-                Text(text = stringResource(R.string.btn_login))
-            }
+            )
+            Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X10.value))
+            StoriButton(
+                text = stringResource(R.string.btn_login),
+                containerColor = MaterialTheme.colorScheme.secondary,
+                enabled = state.isValidForm,
+                onTap = {
+                    viewModel.dispatchAction(LoginScreenAction.Login)
+                }
+            )
             Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X10.value))
             OutlinedButton(
                 onClick = {

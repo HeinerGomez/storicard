@@ -20,7 +20,7 @@
 
     <!-- Take Photo Screen -->
     <string name="title_topbar_take_photo_data_screen">Foto de perfil</string>
-    <string name="photo_uploaded">Photo guardaa exitosamente...</string>
+    <string name="photo_uploaded">Photo guardada exitosamente…</string>
     <string name="disclaimer_take_photo">Vamos a tomar una foto para completar el registro</string>
     <string name="btn_take_photo">TOMAR FOTO</string>
 

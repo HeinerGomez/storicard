@@ -96,13 +96,24 @@ class UserRepositoryImpl @Inject constructor(
         awaitClose()
     }
 
-    override suspend fun auth(email: String, pwd: String) {
-        firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val user = firebaseAuth.currentUser
-            } else {
-                // handle error
+    override suspend fun auth(email: String, pwd: String): Flow<Resource<Boolean>> = callbackFlow {
+        runCatching {
+            firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    if (user != null) {
+                        trySend(Resource.Success(true)).isSuccess
+                    } else {
+                        trySend(Resource.Error(R.string.auth_failed)).isSuccess
+                    }
+                } else {
+                    trySend(Resource.Error(R.string.auth_failed)).isSuccess
+                }
             }
+        }.onFailure {
+            trySend(Resource.Error(R.string.auth_error)).isSuccess
         }
+
+        awaitClose()
     }
 }

@@ -1,7 +1,6 @@
 package com.avility.presentation.screens.personal_data_screen
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -9,8 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Divider
@@ -22,10 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -33,8 +27,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.avility.presentation.R
-import com.avility.presentation.ui_models.KeyField
 import com.avility.presentation.ui_models.PersonalDataUIModel
+import com.avility.presentation.validations.KeyField
 import com.avility.shared.ui.Screen
 import com.avility.shared.ui.components.containers.BasicContainer
 import com.avility.shared.ui.components.containers.MainContainer
@@ -52,6 +46,7 @@ fun PersonalDataScreen(
     val state = viewModel.uiState.value
 
     if (state.createAccountSuccessful) {
+        viewModel.dispatchAction(PersonalDataScreenAction.ClearState)
         navController.navigate(Screen.TakePhotoScreen.route + "/${state.data.email}") {
             popUpTo(0)
         }
@@ -193,10 +188,7 @@ fun PersonalDataScreen(
                 StoriButton(
                     text = stringResource(R.string.btn_next),
                     onTap = {
-                        //viewModel.dispatchAction(PersonalDataScreenAction.OnNextButton)
-                        navController.navigate(Screen.TakePhotoScreen.route + "/agheinerag@gmail.com") {
-                            popUpTo(0)
-                        }
+                        viewModel.dispatchAction(PersonalDataScreenAction.OnNextButton)
                     },
                     enabled = state.isValidForm
                 )
@@ -251,9 +243,3 @@ private fun DangerMessageRibbon(value: String, scope: ColumnScope) {
         }
     }
 }
-
-/**
- * state.msgErrorResource?.let {
- *                 stringResource(it)
- *             }.orEmpty()
- */

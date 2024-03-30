@@ -34,6 +34,7 @@ import com.avility.presentation.R
 import com.avility.shared.ui.components.containers.BaseRowItem
 import com.avility.shared.ui.components.containers.BasicContainer
 import com.avility.shared.ui.components.containers.MainContainer
+import com.avility.shared.ui.components.others.LottieInfoScreen
 import com.avility.shared.ui.constants.MeasureLargeDimen
 import com.avility.shared.ui.constants.MeasureSmallDimen
 import com.avility.shared.ui.constants.dangerColor
@@ -62,8 +63,15 @@ fun HomeScreen(
                     .background(Color.Transparent),
                 verticalArrangement = Arrangement.Center
             ) {
-                StoriCreditCard(
-                    card
+                card?.let {
+                    StoriCreditCard(
+                        it
+                    )
+                } ?: LottieInfoScreen(
+                    resource = com.avility.shared.R.raw.card_error,
+                    message = state.msgErrorResourceForCard?.let { resource ->
+                        stringResource(resource)
+                    } ?: stringResource(com.avility.shared.R.string.get_card_info_failed)
                 )
             }
             Column(
@@ -77,49 +85,58 @@ fun HomeScreen(
                     )
                     .background(Color.Transparent)
             ) {
-                LazyColumn {
-                    items(movements) { movement ->
-                        BaseRowItem(
-                            leading = {
-                                Text(
-                                    text = movement.transactionDescription,
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            },
-                            containerColor = MaterialTheme.colorScheme.tertiary,
-                            trailing = {
-                                Column(
-                                    horizontalAlignment = Alignment.End
-                                ) {
+                if (movements.isNotEmpty()) {
+                    LazyColumn {
+                        items(movements) { movement ->
+                            BaseRowItem(
+                                leading = {
                                     Text(
-                                        text = movement.transactionValue,
-                                        style = MaterialTheme.typography.bodyMedium.copy(
-                                            color = if(movement.natureTransaction) {
-                                                successColor
-                                            } else {
-                                                dangerColor
-                                            },
-                                            fontWeight = FontWeight.Bold
-                                        ),
-                                        textAlign = TextAlign.End
+                                        text = movement.transactionDescription,
+                                        style = MaterialTheme.typography.bodyMedium
                                     )
-                                    Text(
-                                        text = movement.date,
-                                        style = MaterialTheme.typography.labelMedium.copy(
-                                            fontWeight = FontWeight.Bold
-                                        ),
-                                        textAlign = TextAlign.End
-                                    )
-                                }
-                            },
-                            leadingWeight = 0.7f,
-                            trailingWeight = 0.3f,
-                            onTap = {
+                                },
+                                containerColor = MaterialTheme.colorScheme.tertiary,
+                                trailing = {
+                                    Column(
+                                        horizontalAlignment = Alignment.End
+                                    ) {
+                                        Text(
+                                            text = movement.transactionValue,
+                                            style = MaterialTheme.typography.bodyMedium.copy(
+                                                color = if(movement.natureTransaction) {
+                                                    successColor
+                                                } else {
+                                                    dangerColor
+                                                },
+                                                fontWeight = FontWeight.Bold
+                                            ),
+                                            textAlign = TextAlign.End
+                                        )
+                                        Text(
+                                            text = movement.date,
+                                            style = MaterialTheme.typography.labelMedium.copy(
+                                                fontWeight = FontWeight.Bold
+                                            ),
+                                            textAlign = TextAlign.End
+                                        )
+                                    }
+                                },
+                                leadingWeight = 0.7f,
+                                trailingWeight = 0.3f,
+                                onTap = {
 
-                            }
-                        )
-                        Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X03.value))
+                                }
+                            )
+                            Spacer(modifier = Modifier.height(MeasureSmallDimen.DIMEN_X03.value))
+                        }
                     }
+                } else {
+                    LottieInfoScreen(
+                        resource = com.avility.shared.R.raw.error_alert,
+                        message = state.msgErrorResourceForMovement?.let { resource ->
+                            stringResource(resource)
+                        } ?: stringResource(com.avility.shared.R.string.get_movement_info_failed)
+                    )
                 }
             }
         }
