@@ -21,6 +21,10 @@ aparte permite visualizar una tarjeta de credito y sus movimientos asociados
 ## Video Demostrativo
 
 
+https://github.com/HeinerGomez/storicard/assets/27563731/3c556d49-1187-4d64-b0d4-01485f198ca4
+
+
+
 ## Instalación
 
 - *PASO 1:* Clonar el proyecto y tenerlo de manera local
