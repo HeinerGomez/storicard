@@ -11,7 +11,7 @@ class ValidatePasswordUseCase @Inject constructor() {
 
         if (password.isBlank()) {
             strResource = R.string.password_is_blank
-        } else if (password.length < 5) {
+        } else if (password.length < 6) {
             strResource = R.string.password_min_length
         } else if(password.length > 10) {
             strResource = R.string.password_max_length

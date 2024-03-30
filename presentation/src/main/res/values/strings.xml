@@ -9,6 +9,7 @@
     <string name="btn_next">Siguiente</string>
     <string name="btn_signup">Registrarme</string>
     <string name="btn_login">Iniciar sesión</string>
+    <string name="camera_permission_not_allowed">Permiso de la camara no aceptado</string>
 
     <!-- Login Screen -->
     <string name="welcome_stori_card">Bienvenido a Stori Card</string>
@@ -19,6 +20,9 @@
 
     <!-- Take Photo Screen -->
     <string name="title_topbar_take_photo_data_screen">Foto de perfil</string>
+    <string name="photo_uploaded">Photo guardaa exitosamente...</string>
+    <string name="disclaimer_take_photo">Vamos a tomar una foto para completar el registro</string>
+    <string name="btn_take_photo">TOMAR FOTO</string>
 
     <!-- Card Resources -->
     <string name="valid_until">Válido Hasta</string>

@@ -6,7 +6,7 @@ import com.avility.presentation.ui_models.PersonalDataUIModel
 data class PersonalDataScreenState(
     val isLoading: Boolean = false,
     val data: PersonalDataUIModel = PersonalDataUIModel(),
-    val isValidForm: Boolean = true,
+    val isValidForm: Boolean = false,
     @StringRes
     val msgErrorResource: Int? = null,
     val createAccountSuccessful: Boolean = false

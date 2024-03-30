@@ -21,4 +21,5 @@ dependencies {
     implementation(Google.firebaseAnalitycs)
     implementation(Google.firebaseFireStore)
     implementation(Google.firebaseAuth)
+    implementation(Google.firebaseStorage)
 }

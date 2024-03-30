@@ -16,7 +16,7 @@ import com.avility.shared.ui.constants.roundedShapes
 fun StoriButton(
     text: String,
     containerColor: Color = MaterialTheme.colorScheme.secondary,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onTap: () -> Unit = {}
 ) {
     Button(

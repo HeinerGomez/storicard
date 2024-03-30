@@ -7,4 +7,6 @@ object Constants {
     const val USER_ID_PARAM = "userId"
     const val USERS_COLLECTION = "users"
 
+    const val PHOTO_FIELD = "photo"
+    const val PHOTO_FOLDER = "photos"
 }
