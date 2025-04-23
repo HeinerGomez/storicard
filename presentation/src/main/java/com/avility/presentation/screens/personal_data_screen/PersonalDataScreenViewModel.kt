@@ -12,6 +12,7 @@ import com.avility.presentation.validations.FieldValidation
 import com.avility.presentation.validations.KeyField
 import com.avility.presentation.validations.isValidForm
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,7 +34,7 @@ class PersonalDataScreenViewModel @Inject constructor(
     }
 
     private fun updatePersonalData(action: PersonalDataScreenAction.UpdatePersonalData) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.) {
             for (fieldToValidate in action.personalData.fieldsValidation) {
                 validateField(action.personalData, fieldToValidate)
             }
